@@ -42,7 +42,7 @@ impl Plugin for GamePlugin {
             .add_plugin(bevy_ninepatch::NinePatchPlugin::<()>::default())
             .init_resource::<Player>()
             .insert_resource(TimedEffectTicker {
-                timer: Timer::new(Duration::from_secs(1), true),
+                timer: Timer::new(Duration::from_secs(1), TimerMode::Repeating),
             })
             .insert_resource(Hero {
                 combat_stats: Combatant {
@@ -243,7 +243,7 @@ fn test_slice(
         info!("texture present");
         let nine_patch_handle = nine_patches.add(NinePatchBuilder::by_margins(30, 30, 30, 30));
 
-        commands.spawn_bundle(
+        commands.spawn(
             // this component bundle will be detected by the plugin, and the 9-Patch UI element will be added as a child
             // of this entity
             NinePatchBundle {

@@ -56,7 +56,7 @@ pub fn spawn_item(
         if let Some(source) = source {
             // Spawn the animating item.
             commands
-                .spawn_bundle(SpriteBundle {
+                .spawn(SpriteBundle {
                     sprite: Sprite {
                         custom_size: Some(coords.dimens.as_vec2()),
                         ..default()
@@ -75,9 +75,9 @@ pub fn spawn_item(
                 .insert(CleanupOnGameplayEnd);
         }
         // Spawn the silhouette.
-        let mut builder = commands.spawn();
+        let mut builder = commands.spawn_empty();
         builder
-            .insert_bundle(SpriteBundle {
+            .insert(SpriteBundle {
                 sprite: Sprite {
                     custom_size: Some(coords.dimens.as_vec2()),
                     ..default()

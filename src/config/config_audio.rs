@@ -1,9 +1,10 @@
 use bevy::asset::{AssetLoader, BoxedFuture, LoadContext, LoadedAsset};
+use bevy::prelude::Resource;
 
 use serde::{Deserialize, Serialize};
 
 use bevy::reflect::TypeUuid;
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "d6b519cf-60bc-47e4-8570-1f40146932c5"]
 pub struct AudioConfig {

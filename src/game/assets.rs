@@ -14,7 +14,7 @@ use crate::config::data_recipes::RecipesData;
 use crate::config::data_texts::TextsData;
 use crate::{AudioConfig, DebugConfig, SimConfig};
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Resource)]
 pub struct AssetStorage {
     textures: HashMap<TextureId, Handle<Image>>,
     atlases: HashMap<TextureId, Handle<TextureAtlas>>,
@@ -129,15 +129,15 @@ impl AssetStorage {
 
     pub fn get_all_handle_ids(&self) -> Vec<HandleId> {
         let mut vec = Vec::new();
-        vec.append(&mut self.textures.iter().map(|item| item.1.clone().id).collect());
+        vec.append(&mut self.textures.iter().map(|item| item.1.clone().id()).collect());
         // vec.append(&mut self.atlases.iter().map(|item| item.1.clone().id).collect());
-        vec.append(&mut self.fonts.iter().map(|item| item.1.clone().id).collect());
+        vec.append(&mut self.fonts.iter().map(|item| item.1.clone().id()).collect());
         vec.append(
             &mut self
                 .music
                 .iter()
                 .flat_map(|(_, value)| value.iter())
-                .map(|(handle, _)| handle.id)
+                .map(|(handle, _)| handle.id())
                 .collect(),
         );
         vec.append(
@@ -145,18 +145,18 @@ impl AssetStorage {
                 .sounds
                 .iter()
                 .flat_map(|(_, value)| value.iter())
-                .map(|handle| handle.id)
+                .map(|handle| handle.id())
                 .collect(),
         );
-        vec.push(self.audio.clone().id);
-        vec.push(self.debug.clone().id);
-        vec.push(self.sim.clone().id);
-        vec.push(self.blueprint.clone().id);
-        vec.push(self.enemies.clone().id);
-        vec.push(self.items.clone().id);
-        vec.push(self.layout.clone().id);
-        vec.push(self.recipes.clone().id);
-        vec.push(self.texts.clone().id);
+        vec.push(self.audio.clone().id());
+        vec.push(self.debug.clone().id());
+        vec.push(self.sim.clone().id());
+        vec.push(self.blueprint.clone().id());
+        vec.push(self.enemies.clone().id());
+        vec.push(self.items.clone().id());
+        vec.push(self.layout.clone().id());
+        vec.push(self.recipes.clone().id());
+        vec.push(self.texts.clone().id());
         vec
     }
 }

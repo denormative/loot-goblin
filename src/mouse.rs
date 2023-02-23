@@ -4,7 +4,7 @@ use iyes_loopless::prelude::ConditionSet;
 use crate::game::camera::GameCamera;
 use crate::Update;
 
-#[derive(Default)]
+#[derive(Default, Resource)]
 pub struct Mouse {
     /// Position in world coordinates.
     pub position: Vec2,

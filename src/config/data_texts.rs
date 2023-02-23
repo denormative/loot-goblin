@@ -7,7 +7,9 @@ use serde::{Deserialize, Serialize};
 use crate::game::sim::dungeon_components::TextType;
 
 use bevy::reflect::TypeUuid;
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+use bevy::prelude::Resource;
+
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "9141eb1b-2cde-453a-8886-9757a7b17f9b"]
 pub struct TextsData {

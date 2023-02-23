@@ -51,7 +51,7 @@ pub fn check_drag_begin(
             commands.entity(entity).insert(BeingDragged);
             commands.entity(entity).insert(Silhouette);
             commands
-                .spawn_bundle(SpriteBundle {
+                .spawn(SpriteBundle {
                     sprite: Sprite {
                         color: Color::rgba(1., 1., 1., 0.5),
                         custom_size: Some(coords.dimens.as_vec2()),

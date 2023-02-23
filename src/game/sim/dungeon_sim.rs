@@ -19,7 +19,7 @@ use crate::game::{GameResult, ItemId};
 /// Handle a state event. Mainly handle hero's death?
 pub struct SimStateEvent(String);
 
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Resource)]
 pub struct DungeonState {
     pub max_depth: i32,
     pub current_room_idx: i32,
@@ -42,7 +42,7 @@ pub fn init_dungeon(
         max_depth: dungeon_bp.levels.len() as i32 - 1,
         current_room_idx: 0,
         current_level: None,
-        msg_cooldown: Timer::new(Duration::from_millis(params.duration_millis), true),
+        msg_cooldown: Timer::new(Duration::from_millis(params.duration_millis), TimerMode::Repeating),
         running: true,
         combat_state: CombatState::Init,
     };

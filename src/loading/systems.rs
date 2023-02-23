@@ -37,12 +37,12 @@ pub fn load_assets(
     let config = prepare_loading_config();
 
     let handle_backpack = assets.load("textures/sheet_backpack.png");
-    let atlas_backpack = TextureAtlas::from_grid(handle_backpack, Vec2::new(320.0, 320.0), 3, 1);
+    let atlas_backpack = TextureAtlas::from_grid(handle_backpack, Vec2::new(320.0, 320.0), 3, 1, None, None);
     let handle_backpack = texture_atlases.add(atlas_backpack);
     storage.put_atlas(TextureId::Backpack, handle_backpack);
 
     let handle_player = assets.load("textures/sheet_record_player.png");
-    let atlas_player = TextureAtlas::from_grid(handle_player, Vec2::new(640.0, 640.0), 1, 1);
+    let atlas_player = TextureAtlas::from_grid(handle_player, Vec2::new(640.0, 640.0), 1, 1, None, None);
     let handle_player = texture_atlases.add(atlas_player);
     storage.put_atlas(TextureId::RecordPlayer, handle_player);
 

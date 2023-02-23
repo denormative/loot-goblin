@@ -5,7 +5,9 @@ use crate::game::items::{Item, ItemId};
 use crate::positioning::Dimens;
 
 use bevy::reflect::TypeUuid;
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+use bevy::prelude::Resource;
+
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "e739c4a0-e8b8-4773-9b3e-7e022c3c4f85"]
 pub struct ItemsData {

@@ -14,7 +14,7 @@ pub fn create_layout_background(
     let center = layout.screen_dimens * 0.5;
     let menu_size = MENU_ZOOM * layout.screen_dimens;
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 custom_size: Some(menu_size),
                 ..default()
@@ -31,7 +31,7 @@ pub fn create_layout_background(
     // During the game, not much of this image is visible. But during the transition,
     // this really sells the illusion that you're entering the backpack.
     commands
-        .spawn_bundle(SpriteSheetBundle {
+        .spawn(SpriteSheetBundle {
             sprite: TextureAtlasSprite {
                 custom_size: Some(Vec2::splat(size)),
                 index: 2,
@@ -44,7 +44,7 @@ pub fn create_layout_background(
         .insert(CleanupOnGameplayEnd);
     // Create the clickable menu backpack.
     commands
-        .spawn_bundle(SpriteSheetBundle {
+        .spawn(SpriteSheetBundle {
             sprite: TextureAtlasSprite {
                 custom_size: Some(Vec2::splat(size)),
                 index: 0,

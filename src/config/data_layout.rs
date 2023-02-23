@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 use crate::game::items::EquipmentSlot;
 use crate::positioning::Coords;
 
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "6762d701-5cc0-499c-bf99-8845ff67792e"]
 pub struct LayoutData {

@@ -22,7 +22,7 @@ pub fn create_layout_music(
     let height = layout.c_left.music_height();
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 color: Color::rgba(0.2, 0.2, 0.2, 0.8),
                 custom_size: Some(Vec2::new(width, height)),
@@ -37,7 +37,7 @@ pub fn create_layout_music(
             let pos_box = layout.c_left.music_player.0;
             let dimens_box = layout.c_left.music_player.1;
             parent
-                .spawn_bundle(SpriteSheetBundle {
+                .spawn(SpriteSheetBundle {
                     sprite: TextureAtlasSprite {
                         custom_size: Some(dimens_box),
                         index: 0,
@@ -52,7 +52,7 @@ pub fn create_layout_music(
                     ..default()
                 })
                 .insert(AnimationTimer {
-                    timer: Timer::new(Duration::from_millis(200), true),
+                    timer: Timer::new(Duration::from_millis(200), TimerMode::Repeating),
                     index: 0,
                     nr_frames: 1,
                     ping_pong: false,
@@ -79,9 +79,9 @@ pub fn create_layout_music(
                 height - layout.c_left.music_text_margin * 2.,
             );
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(AudioTextDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     // Default text, will probably never be seen:
                     text: Text::from_section(
                         "Click the record player to start the music.",

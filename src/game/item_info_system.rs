@@ -49,7 +49,7 @@ pub fn update_mouse_over_item_info_system(
 
             // Spawn the container with the sprite background:
             commands
-                .spawn_bundle(SpriteBundle {
+                .spawn(SpriteBundle {
                     sprite: Sprite {
                         custom_size: Some(Vec2::splat(0.)), //Will be adjusted later.
                         ..default()
@@ -72,7 +72,7 @@ pub fn update_mouse_over_item_info_system(
                     let text_bounds = Vec2::new(5., 3.);
                     // Spawn the name text:
                     parent
-                        .spawn_bundle(Text2dBundle {
+                        .spawn(Text2dBundle {
                             // Default text, will probably never be seen:
                             text: Text::from_section(
                                 &item.name,
@@ -101,7 +101,7 @@ pub fn update_mouse_over_item_info_system(
                         .insert(TooltipName);
                     // Spawn the description text:
                     parent
-                        .spawn_bundle(Text2dBundle {
+                        .spawn(Text2dBundle {
                             // Default text, will probably never be seen:
                             text: Text::from_section(
                                 &item.description,
@@ -136,7 +136,7 @@ pub fn update_mouse_over_item_info_system(
                             EquipmentSlot::Weapon => "Weapon".to_string(),
                         };
                         parent
-                            .spawn_bundle(Text2dBundle {
+                            .spawn(Text2dBundle {
                                 // Default text, will probably never be seen:
                                 text: Text::from_section(
                                     &slot_name,
@@ -207,7 +207,7 @@ pub fn update_mouse_over_item_info_system(
                         .flatten();
                     if let Some(stat_bonus) = stats_text {
                         parent
-                            .spawn_bundle(Text2dBundle {
+                            .spawn(Text2dBundle {
                                 // Default text, will probably never be seen:
                                 text: Text::from_section(
                                     stat_bonus,

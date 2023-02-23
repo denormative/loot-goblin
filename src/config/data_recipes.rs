@@ -2,9 +2,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::game::recipes::Recipe;
 use bevy::asset::{AssetLoader, BoxedFuture, LoadContext, LoadedAsset};
+use bevy::prelude::Resource;
 
 use bevy::reflect::TypeUuid;
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "866ad0fe-1aa3-4c05-af9a-434e887e796f"]
 pub struct RecipesData {

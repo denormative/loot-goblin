@@ -1,15 +1,16 @@
 ﻿use crate::game::combat::{Enemy, Hero};
 use crate::{default, Entity, KeyCode, Query, Res};
 use bevy::input::Input;
-use bevy::prelude::{Commands, Component, ResMut};
+use bevy::prelude::{Commands, Component, ResMut, Resource};
 use bevy::time::{Time, Timer};
 use serde::{Deserialize, Serialize};
 
+#[derive(Resource)]
 pub struct TimedEffectTicker {
     pub timer: Timer,
 }
 
-#[derive(Component, Clone, Debug, Serialize, Deserialize)]
+#[derive(Component, Clone, Debug, Serialize, Deserialize, Resource)]
 pub struct TemporaryModifier {
     pub time: f32,
     pub max_health_mod: i32,
@@ -119,7 +120,7 @@ pub fn tick_temporary_modifiers(
 }
 
 pub fn apply_timed_modifier(modifier: TemporaryModifier, cmd: &mut Commands) {
-    cmd.spawn().insert(modifier);
+    cmd.spawn_empty().insert(modifier);
 }
 
 pub fn test_apply_modifier(input: Res<Input<KeyCode>>, mut cmd: Commands) {

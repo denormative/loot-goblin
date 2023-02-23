@@ -19,13 +19,13 @@ pub enum SoundEvent {
     KillAllMusic,
 }
 
-#[derive(Component, Default, Clone)]
+#[derive(Component, Default, Clone, Resource)]
 pub struct MusicChannel;
 
-#[derive(Component, Default, Clone)]
+#[derive(Component, Default, Clone, Resource)]
 pub struct SfxChannel;
 
-#[derive(Default)]
+#[derive(Default, Resource)]
 pub struct AudioResource {
     /// If the music player is currently playing a song, its details are stored here.
     /// Otherwise this is None.

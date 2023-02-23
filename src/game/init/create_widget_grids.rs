@@ -30,7 +30,7 @@ pub fn create_layout_grids(
     let overseer_x = inventory_x;
     let overseer_y = inventory_y + inventory_height - overseer_height * layout.overseer_baseline;
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 custom_size: Some(Vec2::new(overseer_width, overseer_height)),
                 ..default()
@@ -47,7 +47,7 @@ pub fn create_layout_grids(
         .insert(CleanupOnGameplayEnd);
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 custom_size: Some(Vec2::new(overseer_width * 0.18, overseer_height * 0.18)),
                 ..default()
@@ -65,7 +65,7 @@ pub fn create_layout_grids(
         .insert(CleanupOnGameplayEnd);
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 custom_size: Some(Vec2::new(overseer_width * 0.16, overseer_height * 0.16)),
                 ..default()
@@ -115,7 +115,7 @@ pub fn create_layout_combine_button(
     let dimens_text = Vec2::new(width - 2., 0.6667);
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 custom_size: Some(Vec2::new(width, height)),
                 ..default()
@@ -135,9 +135,9 @@ pub fn create_layout_combine_button(
         .insert(CleanupOnGameplayEnd)
         .with_children(|parent| {
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(CombineButtonText)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(
                         "COMBINE",
                         TextStyle {
@@ -174,7 +174,7 @@ pub fn create_layout_combine_button(
 
 fn create_grid(commands: &mut Commands, assets: &AssetStorage, dimens: &Dimens, offset: Vec2) {
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 color: Color::rgba(0.2, 0.2, 0.2, 0.8),
                 custom_size: Some(dimens.as_vec2()),
@@ -192,7 +192,7 @@ fn create_grid(commands: &mut Commands, assets: &AssetStorage, dimens: &Dimens, 
         .with_children(|grid| {
             for y in 0..dimens.y {
                 for x in 0..dimens.x {
-                    grid.spawn_bundle(SpriteBundle {
+                    grid.spawn(SpriteBundle {
                         sprite: Sprite {
                             // color: Color::rgba(0.8, 0.8, 0.8, 0.5),
                             custom_size: Some(Dimens::unit().as_vec2()),

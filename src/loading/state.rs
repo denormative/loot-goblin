@@ -36,7 +36,7 @@ impl Plugin for LoadingPlugin {
 }
 
 pub fn display_loading_message(mut commands: Commands, server: Res<AssetServer>) {
-    commands.spawn_bundle(Camera2dBundle::default());
+    commands.spawn(Camera2dBundle::default());
     let text_style = TextStyle {
         font: server.load("fonts/FiraSans-BoldItalic.ttf"),
         font_size: 250.0,
@@ -46,7 +46,7 @@ pub fn display_loading_message(mut commands: Commands, server: Res<AssetServer>)
         horizontal: HorizontalAlign::Center,
         vertical: VerticalAlign::Center,
     };
-    commands.spawn_bundle(Text2dBundle {
+    commands.spawn(Text2dBundle {
         text: Text::from_section("Loading...".to_string(), text_style)
             .with_alignment(text_alignment),
         transform: Transform::from_translation(Vec3::new(0., 0., 0.)).with_scale(Vec3::new(

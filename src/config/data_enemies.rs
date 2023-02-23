@@ -2,9 +2,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::game::combat::Enemy;
 use bevy::asset::{AssetLoader, BoxedFuture, LoadContext, LoadedAsset};
-
+use bevy::prelude::Resource;
 use bevy::reflect::TypeUuid;
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "5286cf90-c4a5-40da-a6c7-1081af73d649"]
 pub struct EnemiesData {

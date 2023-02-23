@@ -61,6 +61,7 @@ pub struct EventFeedItemBg {
 }
 
 /// Resource.
+#[derive(Resource)]
 pub struct EventFeed {
     /// The next id that should be given out.
     pub next_id: i32,
@@ -105,8 +106,8 @@ pub fn handle_add_to_feed(
         );
         let item_id = feed.next_id();
         let text = commands
-            .spawn()
-            .insert_bundle(Text2dBundle {
+            .spawn_empty()
+            .insert(Text2dBundle {
                 text: Text::from_section(message, text_style).with_alignment(text_alignment),
                 // The max size that it should fit in:
                 text_2d_bounds: Text2dBounds {
@@ -136,7 +137,7 @@ pub fn handle_add_to_feed(
             Color::rgba(0.15, 0.15, 0.15, 1.)
         };
         let text_background = commands
-            .spawn_bundle(SpriteBundle {
+            .spawn(SpriteBundle {
                 sprite: Sprite {
                     color: bg_color,
                     custom_size: Some(Vec2::new(dimens_text.x, dimens_text.y)),

@@ -1,6 +1,5 @@
 use std::fmt::Formatter;
 
-use crate::game::item_info_system::MousedOver;
 use bevy::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -34,7 +33,7 @@ impl FallingItem {
             coords,
             source,
             target,
-            timer: Timer::from_seconds(seconds, false),
+            timer: Timer::from_seconds(seconds, TimerMode::Once),
         }
     }
 }
@@ -193,7 +192,7 @@ pub fn consume_item(
                 }
                 // Create a new entity with an EquippedItem component to represent Equipped Items on the Hero
                 if let Some(stats) = item.stat_bonuses {
-                    commands.spawn().insert(EquippedItem {
+                    commands.spawn_empty().insert(EquippedItem {
                         slot: new_slot,
                         name: item.clone().name,
                         stat_bonus: StatBonus {

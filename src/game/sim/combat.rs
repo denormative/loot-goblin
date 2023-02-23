@@ -2,12 +2,12 @@ use crate::game::sim::event_handling::SimMessageEvent;
 use crate::game::ItemId;
 use crate::game::{sim::dungeon_components::TextType, StatBonus};
 use bevy::prelude::*;
-use bevy_inspector_egui::Inspectable;
+use bevy::reflect::Reflect;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 use std::fmt::Formatter;
 
-#[derive(Component, Default, Copy, Clone, Inspectable, Serialize, Deserialize, Debug)]
+#[derive(Component, Default, Copy, Clone, Reflect, Serialize, Deserialize, Debug)]
 pub struct Combatant {
     pub health: i32,
     pub max_health: i32,
@@ -46,7 +46,7 @@ pub enum CombatState {
     Ended,
 }
 
-#[derive(Default)]
+#[derive(Default, Resource)]
 pub struct Hero {
     pub combat_stats: Combatant,
 }
@@ -65,7 +65,7 @@ pub enum EnemyId {
     OgreNecromancer,
 }
 
-#[derive(Clone, Deserialize, Serialize, Debug)]
+#[derive(Clone, Deserialize, Serialize, Debug, Resource)]
 pub struct Enemy {
     pub enemy_id: EnemyId,
     pub combat_stats: Combatant,

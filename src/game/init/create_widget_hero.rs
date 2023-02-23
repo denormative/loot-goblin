@@ -66,7 +66,7 @@ pub fn create_layout_hero(
     let dimens_text = Vec2::new(width - 2., 0.6667);
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 color: Color::rgba(0.2, 0.2, 0.2, 0.8),
                 custom_size: Some(Vec2::new(width, height)),
@@ -81,9 +81,9 @@ pub fn create_layout_hero(
             let health_bar_margin = 0.25;
             let health_bar_size = Vec2::new(width - health_bar_margin * 2., 0.25);
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroNameDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section("Sir Hoardalot", text_style.clone())
                         .with_alignment(text_alignment),
                     // The max size that it should fit in:
@@ -106,9 +106,9 @@ pub fn create_layout_hero(
                     ..default()
                 });
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroCurrentHealthDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(
                         format!(
                             "{}/{}",
@@ -138,9 +138,9 @@ pub fn create_layout_hero(
                 });
 
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section("Combat Stats", text_style.clone())
                         .with_alignment(text_alignment),
                     // The max size that it should fit in:
@@ -164,10 +164,10 @@ pub fn create_layout_hero(
                 });
 
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroProficiencyDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(
                         format!("Combat Proficiency: {}", hero.combat_stats.proficiency),
                         text_style_sm.clone(),
@@ -193,10 +193,10 @@ pub fn create_layout_hero(
                     ..default()
                 });
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroDamageResDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(
                         format!("Damage Resistance: {}", hero.combat_stats.damage_res),
                         text_style_sm.clone(),
@@ -222,10 +222,10 @@ pub fn create_layout_hero(
                     ..default()
                 });
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroDamageBonusDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(
                         format!("Damage Bonus: {}", hero.combat_stats.damage_bonus),
                         text_style_sm.clone(),
@@ -252,10 +252,10 @@ pub fn create_layout_hero(
                 });
             // Equipped Items
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroCurrentArmourDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(format!("Armour: None"), text_style_sm.clone())
                         .with_alignment(text_alignment),
                     // The max size that it should fit in:
@@ -278,10 +278,10 @@ pub fn create_layout_hero(
                     ..default()
                 });
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroCurrentShieldDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(format!("Shield: None"), text_style_sm.clone())
                         .with_alignment(text_alignment),
                     // The max size that it should fit in:
@@ -304,10 +304,10 @@ pub fn create_layout_hero(
                     ..default()
                 });
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(HeroStatsDisplay)
                 .insert(HeroCurrentWeaponDisplay)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section(format!("Weapon: None"), text_style_sm.clone())
                         .with_alignment(text_alignment),
                     // The max size that it should fit in:
@@ -331,7 +331,7 @@ pub fn create_layout_hero(
                 });
             // Health Bar
             parent
-                .spawn_bundle(SpriteBundle {
+                .spawn(SpriteBundle {
                     sprite: Sprite {
                         color: Color::rgba(255., 0.2, 0.2, 0.8),
                         custom_size: Some(health_bar_size),
@@ -348,7 +348,7 @@ pub fn create_layout_hero(
                 .insert(HealthBar);
 
             parent
-                .spawn_bundle(SpriteBundle {
+                .spawn(SpriteBundle {
                     sprite: Sprite {
                         color: Color::rgba(0.1, 0.1, 0.1, 1.),
                         custom_size: Some(health_bar_size),

@@ -153,7 +153,7 @@ pub fn init_menu(mut commands: Commands, assets: Res<AssetStorage>, layout: Res<
     let art_props = "Art by: Jack Pettigrew (DarkDax) & InkeFaux";
     let music_props = "Music by: Twitchywhalez";
 
-    commands.spawn_bundle(Text2dBundle {
+    commands.spawn(Text2dBundle {
         text: Text::from_section("Loot Goblin", title_text_style).with_alignment(text_alignment),
         transform: Transform::from_translation(Vec3::new(
             screen_anchor.x + menu_screen_dimens.x * 0.2,
@@ -168,7 +168,7 @@ pub fn init_menu(mut commands: Commands, assets: Res<AssetStorage>, layout: Res<
         ..default()
     });
 
-    commands.spawn_bundle(Text2dBundle {
+    commands.spawn(Text2dBundle {
         text: Text::from_section(dev_props, props_text_style.clone())
             .with_alignment(text_alignment),
         transform: Transform::from_translation(Vec3::new(
@@ -184,7 +184,7 @@ pub fn init_menu(mut commands: Commands, assets: Res<AssetStorage>, layout: Res<
         ..default()
     });
 
-    commands.spawn_bundle(Text2dBundle {
+    commands.spawn(Text2dBundle {
         text: Text::from_section(art_props, props_text_style.clone())
             .with_alignment(text_alignment),
         transform: Transform::from_translation(Vec3::new(
@@ -200,7 +200,7 @@ pub fn init_menu(mut commands: Commands, assets: Res<AssetStorage>, layout: Res<
         ..default()
     });
 
-    commands.spawn_bundle(Text2dBundle {
+    commands.spawn(Text2dBundle {
         text: Text::from_section(music_props, props_text_style).with_alignment(text_alignment),
         transform: Transform::from_translation(Vec3::new(
             screen_anchor.x + menu_screen_dimens.x * 0.5,
@@ -224,11 +224,12 @@ pub fn clean_menu_entities(mut commands: Commands, query: Query<Entity, With<Men
 
 /// When running the game in the browser, the first half second is always quite stuttery.
 /// This is a timer to wait half a second before starting the music.
+#[derive(Resource)]
 pub struct MainMenuMusicTimer(Timer, bool);
 
 impl Default for MainMenuMusicTimer {
     fn default() -> Self {
-        MainMenuMusicTimer(Timer::from_seconds(1., false), false)
+        MainMenuMusicTimer(Timer::from_seconds(1., TimerMode::Once), false)
     }
 }
 

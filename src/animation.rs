@@ -12,7 +12,7 @@ pub struct AnimationTimer {
 impl AnimationTimer {
     pub fn for_player() -> Self {
         AnimationTimer {
-            timer: Timer::new(Duration::from_millis(50), true),
+            timer: Timer::new(Duration::from_millis(50), TimerMode::Repeating),
             index: 2,
             nr_frames: 5,
             ping_pong: true,

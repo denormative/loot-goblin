@@ -32,7 +32,7 @@ pub struct ColorText;
 pub fn setup_gold(mut commands: Commands, assets: Res<AssetStorage>) {
     // Text with multiple sections
     commands
-        .spawn_bundle(
+        .spawn(
             // Create a TextBundle that has a Text with a list of sections.
             TextBundle::from_sections([
                 TextSection::new(
@@ -77,7 +77,7 @@ pub fn gold_update_system(
     let mut text = text_query.single_mut();
 
     if player.gold.timer.finished() {
-        player.gold.timer = Timer::new(Duration::from_secs(1), false);
+        player.gold.timer = Timer::new(Duration::from_secs(1), TimerMode::Once);
         player.gold.add(10);
         text.sections[1].value = (player.gold.amount).to_string();
     }

@@ -33,7 +33,7 @@ impl Default for GameCamera {
 pub fn create_camera(mut commands: Commands) {
     let bundle = Camera2dBundle::default();
     commands
-        .spawn_bundle(bundle)
+        .spawn(bundle)
         .insert(GameCamera::default())
         .insert(CleanupOnGameplayEnd);
 }

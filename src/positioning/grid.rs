@@ -2,6 +2,7 @@ use bevy::prelude::*;
 
 use crate::positioning::Coords;
 
+#[derive(Resource)]
 pub struct GridData {
     /// The translation offset of the grid.
     /// Add this to the Coords of items on the grid to get their translation.

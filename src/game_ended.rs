@@ -64,7 +64,7 @@ fn draw_game_over_screen(
             );
 
             let quit_btn = ui.put(
-                Rect::from_center_size(pos2(win_wi / 2., win_ht / 2. + 132.), vec2(280., 66.)),
+                egui::Rect::from_center_size(egui::pos2(win_wi / 2., win_ht / 2. + 132.), egui::vec2(280., 66.)),
                 egui::Button::new("Back to menu"),
             );
             if quit_btn.clicked() {

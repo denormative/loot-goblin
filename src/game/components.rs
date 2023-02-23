@@ -2,7 +2,7 @@ use bevy::prelude::*;
 
 use crate::hud::gold::Gold;
 
-#[derive(Default)]
+#[derive(Default, Resource)]
 pub struct Player {
     pub gold: Gold,
 }

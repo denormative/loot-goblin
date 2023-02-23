@@ -1,9 +1,10 @@
 use bevy::asset::{AssetLoader, BoxedFuture, LoadContext, LoadedAsset};
 
 use bevy::reflect::TypeUuid;
+use bevy::prelude::Resource;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid)]
+#[derive(Debug, Deserialize, Serialize, Default, Clone, TypeUuid, Resource)]
 #[serde(deny_unknown_fields)]
 #[uuid = "db168435-8fa5-40f8-908f-560f30e6b158"]
 pub struct DebugConfig {

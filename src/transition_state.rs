@@ -45,10 +45,10 @@ impl Default for MenuTransition {
 
 impl MenuTransition {
     pub fn menu_to_game() -> Self {
-        MenuTransition::FromMenuToGame(Timer::from_seconds(1.5, false))
+        MenuTransition::FromMenuToGame(Timer::from_seconds(1.5, TimerMode::Once))
     }
     pub fn game_to_menu() -> Self {
-        MenuTransition::FromGameToMenu(Timer::from_seconds(0.5, false))
+        MenuTransition::FromGameToMenu(Timer::from_seconds(0.5, TimerMode::Once))
     }
 }
 

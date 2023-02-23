@@ -26,7 +26,7 @@ pub fn create_layout_toasts(
     };
 
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn(SpriteBundle {
             sprite: Sprite {
                 color: Color::rgba(0.2, 0.2, 0.2, 0.8),
                 custom_size: Some(Vec2::new(width, height)),
@@ -39,10 +39,10 @@ pub fn create_layout_toasts(
         .insert(CleanupOnGameplayEnd)
         .with_children(|parent| {
             parent
-                .spawn()
+                .spawn_empty()
                 .insert(ContinuePrompt)
                 .insert(CleanupOnGameplayEnd)
-                .insert_bundle(Text2dBundle {
+                .insert(Text2dBundle {
                     text: Text::from_section("", text_style.clone()).with_alignment(text_alignment),
                     transform: Transform::from_xyz(
                         0., // Centered on parent.
